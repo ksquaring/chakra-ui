@@ -49,6 +49,7 @@ jobs:
       - name: Build docs (static export)
         working-directory: apps/www
         env:
+          GITHUB_PAGES: true
           NEXT_PUBLIC_BASE_PATH: ${{ inputs.base_path }}
         run: pnpm build
 

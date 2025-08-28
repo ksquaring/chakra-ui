@@ -5,7 +5,7 @@
   "scripts": {
     "dev:content": "velite --watch",
     "dev:next": "next dev -p 3001",
-    "dev": "run-p dev:*",
+    "dev": "pnpm build:content && run-p dev:*",
     "build:content": "velite --clean",
     "build:next": "next build",
     "build": "run-s build:*",

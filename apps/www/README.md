@@ -21,28 +21,25 @@ pnpm build
 ```
 
 Notes:
-
-- Static export is enabled via `next.config.ts` with `output: "export"`,
-  `trailingSlash: true`, and `images.unoptimized: true`.
-- Redirects are handled in pages (client-side), not in Next.js config, since
-  static export ignores `redirects()`.
+- Static export is enabled via `next.config.ts` with `output: "export"`, `trailingSlash: true`, and `images.unoptimized: true`.
+- Redirects are handled in pages (client-side), not in Next.js config, since static export ignores `redirects()`.
+- When `GITHUB_PAGES=true` and no `NEXT_PUBLIC_BASE_PATH` is set, the site defaults to base path `/chakra-ui`.
 
 ## GitHub Pages deployment
 
-1. Optional: If serving under a subpath (e.g. `/docs-site`), set base path:
+1) Optional: If serving under a subpath (e.g. `/docs-site`), set base path:
 
 ```bash
 export NEXT_PUBLIC_BASE_PATH=/docs-site
 ```
 
-2. Build:
+2) Build:
 
 ```bash
 pnpm build
 ```
 
-3. Deploy the `apps/www/out` folder to GitHub Pages:
-
+3) Deploy the `apps/www/out` folder to GitHub Pages:
 - If using a separate branch like `gh-pages`, push `out` contents there.
 - Or use an action to publish `out`.
 
