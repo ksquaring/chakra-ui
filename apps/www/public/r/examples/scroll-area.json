@@ -4,7 +4,7 @@
   "examples": [
     {
       "name": "scroll-area-basic",
-      "content": "export const ScrollAreaBasic = () => (\n  <ScrollArea.Root height=\"8.5rem\">\n    <ScrollArea.Viewport>\n      <ScrollArea.Content spaceY=\"4\">\n        <LoremIpsum p={3} />\n      </ScrollArea.Content>\n    </ScrollArea.Viewport>\n    <ScrollArea.Scrollbar>\n      <ScrollArea.Thumb />\n    </ScrollArea.Scrollbar>\n    <ScrollArea.Corner />\n  </ScrollArea.Root>\n)\n",
+      "content": "export const ScrollAreaBasic = () => (\n  <ScrollArea.Root height=\"8.5rem\" maxW=\"lg\">\n    <ScrollArea.Viewport>\n      <ScrollArea.Content spaceY=\"4\" textStyle=\"sm\">\n        <LoremIpsum p={3} />\n      </ScrollArea.Content>\n    </ScrollArea.Viewport>\n    <ScrollArea.Scrollbar>\n      <ScrollArea.Thumb />\n    </ScrollArea.Scrollbar>\n    <ScrollArea.Corner />\n  </ScrollArea.Root>\n)\n",
       "hasSnippet": false,
       "importPaths": [
         "import { ScrollArea } from \"@chakra-ui/react\"",
@@ -17,7 +17,7 @@
     },
     {
       "name": "scroll-area-both-directions",
-      "content": "export const ScrollAreaBothDirections = () => (\n  <ScrollArea.Root height=\"12rem\" width=\"xl\" size=\"xs\">\n    <ScrollArea.Viewport>\n      <ScrollArea.Content p=\"1\" spaceY=\"4\" w=\"40rem\">\n        <LoremIpsum p={3} />\n      </ScrollArea.Content>\n    </ScrollArea.Viewport>\n    <ScrollArea.Scrollbar orientation=\"horizontal\" />\n    <ScrollArea.Scrollbar orientation=\"vertical\" />\n    <ScrollArea.Corner />\n  </ScrollArea.Root>\n)\n",
+      "content": "export const ScrollAreaBothDirections = () => (\n  <ScrollArea.Root height=\"12rem\" width=\"lg\" size=\"xs\" p=\"2\">\n    <ScrollArea.Viewport>\n      <ScrollArea.Content spaceY=\"4\" w=\"40rem\" textStyle=\"sm\">\n        <LoremIpsum p={3} />\n      </ScrollArea.Content>\n    </ScrollArea.Viewport>\n    <ScrollArea.Scrollbar orientation=\"horizontal\" />\n    <ScrollArea.Scrollbar orientation=\"vertical\" />\n    <ScrollArea.Corner bg=\"bg\" />\n  </ScrollArea.Root>\n)\n",
       "hasSnippet": false,
       "importPaths": [
         "import { ScrollArea } from \"@chakra-ui/react\"",
@@ -107,7 +107,7 @@
     },
     {
       "name": "scroll-area-with-scroll-shadow",
-      "content": "export const ScrollAreaWithScrollShadow = () => {\n  return (\n    <ScrollArea.Root height=\"20rem\" maxW=\"2xl\">\n      <ScrollArea.Viewport\n        css={{\n          \"--scroll-shadow-size\": \"4rem\",\n          maskImage:\n            \"linear-gradient(#000,#000,transparent 0,#000 var(--scroll-shadow-size),#000 calc(100% - var(--scroll-shadow-size)),transparent)\",\n          \"&[data-at-top]\": {\n            maskImage:\n              \"linear-gradient(180deg,#000 calc(100% - var(--scroll-shadow-size)),transparent)\",\n          },\n          \"&[data-at-bottom]\": {\n            maskImage:\n              \"linear-gradient(0deg,#000 calc(100% - var(--scroll-shadow-size)),transparent)\",\n          },\n        }}\n      >\n        <ScrollArea.Content spaceY=\"4\">\n          {Array.from({ length: 10 }, (_, i) => (\n            <Box key={i} h=\"20\">\n              Item {i + 1}\n            </Box>\n          ))}\n        </ScrollArea.Content>\n      </ScrollArea.Viewport>\n    </ScrollArea.Root>\n  )\n}\n",
+      "content": "export const ScrollAreaWithScrollShadow = () => {\n  return (\n    <ScrollArea.Root height=\"20rem\" maxW=\"lg\">\n      <ScrollArea.Viewport\n        css={{\n          \"--scroll-shadow-size\": \"4rem\",\n          maskImage:\n            \"linear-gradient(#000,#000,transparent 0,#000 var(--scroll-shadow-size),#000 calc(100% - var(--scroll-shadow-size)),transparent)\",\n          \"&[data-at-top]\": {\n            maskImage:\n              \"linear-gradient(180deg,#000 calc(100% - var(--scroll-shadow-size)),transparent)\",\n          },\n          \"&[data-at-bottom]\": {\n            maskImage:\n              \"linear-gradient(0deg,#000 calc(100% - var(--scroll-shadow-size)),transparent)\",\n          },\n        }}\n      >\n        <ScrollArea.Content spaceY=\"4\">\n          {Array.from({ length: 10 }, (_, i) => (\n            <Box key={i} h=\"20\">\n              Item {i + 1}\n            </Box>\n          ))}\n        </ScrollArea.Content>\n      </ScrollArea.Viewport>\n    </ScrollArea.Root>\n  )\n}\n",
       "hasSnippet": false,
       "importPaths": [
         "import { ScrollArea } from \"@chakra-ui/react\"",
@@ -117,7 +117,7 @@
     },
     {
       "name": "scroll-area-with-sizes",
-      "content": "export const ScrollAreaWithSizes = () => (\n  <Stack gap=\"8\" maxW=\"2xl\">\n    <For each={[\"xs\", \"sm\", \"md\", \"lg\"]}>\n      {(size) => (\n        <Stack gap=\"2\" key={size}>\n          <Text ps=\"3\" fontWeight=\"medium\">\n            size=\"{size}\"\n          </Text>\n          <ScrollArea.Root size={size} height=\"8rem\" variant=\"always\">\n            <ScrollArea.Viewport>\n              <ScrollArea.Content spaceY=\"4\">\n                <LoremIpsum />\n              </ScrollArea.Content>\n            </ScrollArea.Viewport>\n            <ScrollArea.Scrollbar />\n          </ScrollArea.Root>\n        </Stack>\n      )}\n    </For>\n  </Stack>\n)\n",
+      "content": "export const ScrollAreaWithSizes = () => (\n  <Stack gap=\"8\" maxW=\"lg\">\n    <For each={[\"xs\", \"sm\", \"md\", \"lg\"]}>\n      {(size) => (\n        <Stack gap=\"2\" key={size}>\n          <Text fontWeight=\"medium\">size=\"{size}\"</Text>\n          <ScrollArea.Root size={size} height=\"8rem\" variant=\"always\">\n            <ScrollArea.Viewport>\n              <ScrollArea.Content paddingEnd=\"5\" textStyle=\"sm\">\n                <LoremIpsum p={2} />\n              </ScrollArea.Content>\n            </ScrollArea.Viewport>\n            <ScrollArea.Scrollbar />\n          </ScrollArea.Root>\n        </Stack>\n      )}\n    </For>\n  </Stack>\n)\n",
       "hasSnippet": false,
       "importPaths": [
         "import { For, ScrollArea, Stack, Text } from \"@chakra-ui/react\"",
@@ -143,7 +143,7 @@
     },
     {
       "name": "scroll-area-with-thumb-styling",
-      "content": "export const ScrollAreaWithThumbStyling = () => (\n  <ScrollArea.Root height=\"8rem\" maxW=\"2xl\" variant=\"always\">\n    <ScrollArea.Viewport>\n      <ScrollArea.Content spaceY=\"4\">\n        <LoremIpsum p={2} />\n      </ScrollArea.Content>\n    </ScrollArea.Viewport>\n    <ScrollArea.Scrollbar bg=\"red.subtle\">\n      <ScrollArea.Thumb bg=\"red.solid\" />\n    </ScrollArea.Scrollbar>\n  </ScrollArea.Root>\n)\n",
+      "content": "export const ScrollAreaWithThumbStyling = () => (\n  <ScrollArea.Root height=\"8rem\" maxW=\"2xl\" variant=\"always\">\n    <ScrollArea.Viewport>\n      <ScrollArea.Content spaceY=\"4\" pe=\"2\">\n        <LoremIpsum p={2} />\n      </ScrollArea.Content>\n    </ScrollArea.Viewport>\n    <ScrollArea.Scrollbar bg=\"red.subtle\">\n      <ScrollArea.Thumb bg=\"red.solid\" />\n    </ScrollArea.Scrollbar>\n  </ScrollArea.Root>\n)\n",
       "hasSnippet": false,
       "importPaths": [
         "import { ScrollArea } from \"@chakra-ui/react\"",
@@ -156,7 +156,7 @@
     },
     {
       "name": "scroll-area-with-variants",
-      "content": "export const ScrollAreaWithVariants = () => (\n  <Stack gap=\"8\">\n    <For each={[\"hover\", \"always\"]}>\n      {(variant) => (\n        <Stack gap=\"2\" key={variant}>\n          <Text ps=\"3\" fontWeight=\"medium\">\n            variant=\"{variant}\"\n          </Text>\n          <ScrollArea.Root height=\"8rem\" variant={variant}>\n            <ScrollArea.Viewport>\n              <ScrollArea.Content>\n                <Lorem p={4} />\n              </ScrollArea.Content>\n            </ScrollArea.Viewport>\n            <ScrollArea.Scrollbar />\n          </ScrollArea.Root>\n        </Stack>\n      )}\n    </For>\n  </Stack>\n)\n",
+      "content": "export const ScrollAreaWithVariants = () => (\n  <Stack gap=\"8\" maxW=\"lg\">\n    <For each={[\"hover\", \"always\"]}>\n      {(variant) => (\n        <Stack gap=\"2\" key={variant}>\n          <Text fontWeight=\"medium\">variant=\"{variant}\"</Text>\n          <ScrollArea.Root height=\"8rem\" variant={variant}>\n            <ScrollArea.Viewport>\n              <ScrollArea.Content paddingEnd=\"3\" textStyle=\"sm\">\n                <Lorem p={4} />\n              </ScrollArea.Content>\n            </ScrollArea.Viewport>\n            <ScrollArea.Scrollbar />\n          </ScrollArea.Root>\n        </Stack>\n      )}\n    </For>\n  </Stack>\n)\n",
       "hasSnippet": false,
       "importPaths": [
         "import { For, ScrollArea, Stack, Text } from \"@chakra-ui/react\"",
