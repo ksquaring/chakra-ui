@@ -95,7 +95,10 @@ const TopNavMobileLink = chakra(Link, {
 
 const HeaderLogoLink = () => {
   return (
-    <Link href="/" aria-label="Chakra UI, Back to homepage">
+    <Link
+      href="/docs/get-started/installation"
+      aria-label="Chakra UI, Back to docs home"
+    >
       <Logo />
     </Link>
   )

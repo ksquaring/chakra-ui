@@ -14,7 +14,6 @@ const docsLinks: NavItem = {
             { title: "CLI", url: "cli" },
             { title: "Figma", url: "figma" },
             { title: "Contributing", url: "contributing" },
-            { title: "Showcase", url: "/showcase", external: true },
           ],
         },
         {
@@ -348,12 +347,7 @@ export const docsConfig: DocsConfig = {
     return `${this.repoUrl}/tree/${this.repoBranch}/apps/www/content`
   },
   donationUrl: "https://opencollective.com/chakra-ui",
-  navigation: [
-    docsLinks,
-    { title: "Playground", url: "playground" },
-    { title: "Guides", url: "guides" },
-    { title: "Blog", url: "blog" },
-  ],
+  navigation: [docsLinks],
   proUrl: "https://pro.chakra-ui.com?utm_source=chakra-ui.com",
 }
 

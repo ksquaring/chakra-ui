@@ -1,48 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chakra UI Docs (Docs-only)
 
-## Getting Started
+This app is configured to serve only the documentation at `/docs`.
 
-First, run the development server:
+## Development
+
+- Start dev server on port 3001:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the
-result.
+Open http://localhost:3001/docs/get-started/installation
 
-You can start editing the page by modifying `app/page.tsx`. The page
-auto-updates as you edit the file.
+## Build static site
 
-This project uses
-[`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to
-automatically optimize and load Inter, a custom Google Font.
+- Generate content and build static export to `apps/www/out`:
 
-## Learn More
+```bash
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Notes:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Static export is enabled via `next.config.ts` with `output: "export"`,
+  `trailingSlash: true`, and `images.unoptimized: true`.
+- Redirects are handled in pages (client-side), not in Next.js config, since
+  static export ignores `redirects()`.
 
-You can check out
-[the Next.js GitHub repository](https://github.com/vercel/next.js/) - your
-feedback and contributions are welcome!
+## GitHub Pages deployment
 
-## Deploy on Vercel
+1. Optional: If serving under a subpath (e.g. `/docs-site`), set base path:
 
-The easiest way to deploy your Next.js app is to use the
-[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
+```bash
+export NEXT_PUBLIC_BASE_PATH=/docs-site
+```
 
-Check out our
-[Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
-details.
+2. Build:
+
+```bash
+pnpm build
+```
+
+3. Deploy the `apps/www/out` folder to GitHub Pages:
+
+- If using a separate branch like `gh-pages`, push `out` contents there.
+- Or use an action to publish `out`.
+
+Example manual publish:
+
+```bash
+cd apps/www/out
+# create .nojekyll to disable Jekyll
+printf "" > .nojekyll
+# initialize and push
+git init
+git checkout -b gh-pages
+git add .
+git commit -m "Publish docs"
+git remote add origin <your repo url>
+git push -f origin gh-pages
+```
+
+You can also add a workflow that builds and deploys `apps/www/out` on push.
