@@ -230,6 +230,8 @@ export interface CheckmarkVariant {
   size?: "xs" | "sm" | "md" | "lg" | undefined
   /** @default "solid" */
   variant?: "solid" | "outline" | "subtle" | "plain" | "inverted" | undefined
+  /** @default false */
+  filled?: boolean | undefined
 }
 
 export type CheckmarkVariantProps = {
@@ -245,6 +247,8 @@ export interface RadiomarkVariant {
   variant?: "solid" | "subtle" | "outline" | "inverted" | undefined
   /** @default "md" */
   size?: "xs" | "sm" | "md" | "lg" | undefined
+  /** @default false */
+  filled?: boolean | undefined
 }
 
 export type RadiomarkVariantProps = {
@@ -964,6 +968,25 @@ export type RatingGroupVariantMap = {
   [K in keyof RatingGroupVariant]: Array<RatingGroupVariant[K]>
 }
 
+// ScrollArea
+
+export type ScrollAreaSlot = "root" | "viewport" | "content" | "scrollbar" | "thumb" | "corner"
+
+export interface ScrollAreaVariant {
+  /** @default "hover" */
+  variant?: "hover" | "always" | undefined
+  /** @default "md" */
+  size?: "xs" | "sm" | "md" | "lg" | undefined
+}
+
+export type ScrollAreaVariantProps = {
+  [K in keyof ScrollAreaVariant]?: ConditionalValue<ScrollAreaVariant[K]> | undefined
+}
+
+export type ScrollAreaVariantMap = {
+  [K in keyof ScrollAreaVariant]: Array<ScrollAreaVariant[K]>
+}
+
 // SegmentGroup
 
 export type SegmentGroupSlot = "root" | "label" | "item" | "itemText" | "itemControl" | "indicator"
@@ -1375,6 +1398,25 @@ export type TreeViewVariantMap = {
   [K in keyof TreeViewVariant]: Array<TreeViewVariant[K]>
 }
 
+// Listbox
+
+export type ListboxSlot = "root" | "label" | "content" | "item" | "itemText" | "itemIndicator" | "itemGroup" | "itemGroupLabel"
+
+export interface ListboxVariant {
+  /** @default "subtle" */
+  variant?: "subtle" | "solid" | "plain" | undefined
+}
+
+export type ListboxVariantProps = {
+  [K in keyof ListboxVariant]?: ConditionalValue<ListboxVariant[K]> | undefined
+}
+
+export type ListboxVariantMap = {
+  [K in keyof ListboxVariant]: Array<ListboxVariant[K]>
+}
+
+
+
 export interface ConfigSlotRecipes {
   accordion: SystemSlotRecipeFn<AccordionSlot, AccordionVariantProps, AccordionVariantMap>
   actionBar: SystemSlotRecipeFn<ActionBarSlot, ActionBarVariantProps, ActionBarVariantMap>
@@ -1407,6 +1449,7 @@ export interface ConfigSlotRecipes {
   radioCard: SystemSlotRecipeFn<RadioCardSlot, RadioCardVariantProps, RadioCardVariantMap>
   radioGroup: SystemSlotRecipeFn<RadioGroupSlot, RadioGroupVariantProps, RadioGroupVariantMap>
   ratingGroup: SystemSlotRecipeFn<RatingGroupSlot, RatingGroupVariantProps, RatingGroupVariantMap>
+  scrollArea: SystemSlotRecipeFn<ScrollAreaSlot, ScrollAreaVariantProps, ScrollAreaVariantMap>
   segmentGroup: SystemSlotRecipeFn<SegmentGroupSlot, SegmentGroupVariantProps, SegmentGroupVariantMap>
   select: SystemSlotRecipeFn<SelectSlot, SelectVariantProps, SelectVariantMap>
   combobox: SystemSlotRecipeFn<ComboboxSlot, ComboboxVariantProps, ComboboxVariantMap>
@@ -1424,6 +1467,7 @@ export interface ConfigSlotRecipes {
   colorPicker: SystemSlotRecipeFn<ColorPickerSlot, ColorPickerVariantProps, ColorPickerVariantMap>
   qrCode: SystemSlotRecipeFn<QrCodeSlot, QrCodeVariantProps, QrCodeVariantMap>
   treeView: SystemSlotRecipeFn<TreeViewSlot, TreeViewVariantProps, TreeViewVariantMap>
+  listbox: SystemSlotRecipeFn<ListboxSlot, ListboxVariantProps, ListboxVariantMap>
 }
 
 export interface ConfigRecipeSlots {
@@ -1458,6 +1502,7 @@ export interface ConfigRecipeSlots {
   radioCard: RadioCardSlot
   radioGroup: RadioGroupSlot
   ratingGroup: RatingGroupSlot
+  scrollArea: ScrollAreaSlot
   segmentGroup: SegmentGroupSlot
   select: SelectSlot
   combobox: ComboboxSlot

@@ -21,6 +21,7 @@ import { fieldsetSlotRecipe } from "./recipes/fieldset"
 import { fileUploadSlotRecipe } from "./recipes/file-upload"
 import { hoverCardSlotRecipe } from "./recipes/hover-card"
 import { listSlotRecipe } from "./recipes/list"
+import { listboxSlotRecipe } from "./recipes/listbox"
 import { menuSlotRecipe } from "./recipes/menu"
 import { nativeSelectSlotRecipe } from "./recipes/native-select"
 import { numberInputSlotRecipe } from "./recipes/number-input"
@@ -32,6 +33,7 @@ import { qrCodeSlotRecipe } from "./recipes/qr-code"
 import { radioCardSlotRecipe } from "./recipes/radio-card"
 import { radioGroupSlotRecipe } from "./recipes/radio-group"
 import { ratingGroupSlotRecipe } from "./recipes/rating-group"
+import { scrollAreaSlotRecipe } from "./recipes/scroll-area"
 import { segmentGroupSlotRecipe } from "./recipes/segment-group"
 import { selectSlotRecipe } from "./recipes/select"
 import { sliderSlotRecipe } from "./recipes/slider"
@@ -69,6 +71,7 @@ export const slotRecipes = {
   fileUpload: fileUploadSlotRecipe,
   hoverCard: hoverCardSlotRecipe,
   list: listSlotRecipe,
+  listbox: listboxSlotRecipe,
   menu: menuSlotRecipe,
   nativeSelect: nativeSelectSlotRecipe,
   numberInput: numberInputSlotRecipe,
@@ -79,6 +82,7 @@ export const slotRecipes = {
   radioCard: radioCardSlotRecipe,
   radioGroup: radioGroupSlotRecipe,
   ratingGroup: ratingGroupSlotRecipe,
+  scrollArea: scrollAreaSlotRecipe,
   segmentGroup: segmentGroupSlotRecipe,
   select: selectSlotRecipe,
   combobox: comboboxSlotRecipe,

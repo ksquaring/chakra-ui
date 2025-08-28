@@ -1,5 +1,121 @@
 # @chakra-ui/react
 
+## 3.25.0
+
+### Minor Changes
+
+- [#10254](https://github.com/chakra-ui/chakra-ui/pull/10254)
+  [`3fb9d7c`](https://github.com/chakra-ui/chakra-ui/commit/3fb9d7c045ec948088fe3a669d8839cd5de79f1b)
+  Thanks [@segunadebayo](https://github.com/segunadebayo)! - Add new scroll area
+  component
+
+  ```tsx
+  <ScrollArea.Root>
+    <ScrollArea.Viewport>
+      <ScrollArea.Content>{/* Scrolling content */}</ScrollArea.Content>
+    </ScrollArea.Viewport>
+    <ScrollArea.Scrollbar>
+      <ScrollArea.Thumb />
+    </ScrollArea.Scrollbar>
+    <ScrollArea.Corner />
+  </ScrollArea.Root>
+  ```
+
+### Patch Changes
+
+- [`d3a1064`](https://github.com/chakra-ui/chakra-ui/commit/d3a10648adb6fc1c811549a23813b92df05a35e1)
+  Thanks [@segunadebayo](https://github.com/segunadebayo)! - Fix nested token
+  override issue during theme merging
+
+  ```tsx
+  const defaultConfig = {
+    theme: {
+      tokens: {
+        colors: {
+          black: { value: "#000000" },
+        },
+      },
+    },
+  }
+
+  const userConfig = {
+    theme: {
+      tokens: {
+        colors: {
+          black: {
+            100: { value: "#EE0F0F" },
+            200: { value: "#CC0C0C" },
+          },
+        },
+      },
+    },
+  }
+
+  // Before: This would return undefined
+  const system = createSystem(defaultConfig, userConfig)
+  system.token("colors.black.100") // undefined
+
+  // After: This will return merged correctly, preserving the default value
+  system.token("colors.black.100") // "#EE0F0F"
+  system.token("colors.black.200") // "#CC0C0C"
+  system.token("colors.black") // "#000000"
+  ```
+
+- [#10244](https://github.com/chakra-ui/chakra-ui/pull/10244)
+  [`9501179`](https://github.com/chakra-ui/chakra-ui/commit/9501179fc4b1962622672a7f16bd30901d5bf8f9)
+  Thanks [@isBatak](https://github.com/isBatak)! - - **System**: Implement
+  preset for table `border-spacing` property and improve documentation
+  - **Menu**
+    - Fix issue where `onCheckedChange` could be called twice on checkbox or
+      radio item
+    - Add `data-state` attribute for context menu trigger
+    - Fix context menu positioning bug where reopening at the same coordinates
+      fails to reposition
+  - **Radio Group**: Fixed issue where arrow key navigation doesn't apply
+    `data-focus-visible` on the newly focused item.
+  - **Highlight**: Add `exactMatch` prop that enables whole-word matching using
+    regex word boundaries.
+
+## 3.24.2
+
+### Patch Changes
+
+- [`333b063`](https://github.com/chakra-ui/chakra-ui/commit/333b0636230ec83a51e50dd74896117b60b32cda)
+  Thanks [@segunadebayo](https://github.com/segunadebayo)! - Fix issue where
+  using `asChild` with invalid child elements or `React.lazy` components would
+  throw an error.
+
+  > This issue more commonly occurs when composing with Next.js `Link`
+  > component.
+
+  ```tsx
+  import { Breadcrumb } from "@chakra-ui/react"
+  import Link from "next/link"
+
+  export default function Page() {
+    return (
+      <Breadcrumb.Root>
+        {/* 🧨 Throws an error */}
+        <Breadcrumb.Link asChild>
+          <Link href="#">aaaa</Link>
+        </Breadcrumb.Link>
+      </Breadcrumb.Root>
+    )
+  }
+  ```
+
+## 3.24.1
+
+### Patch Changes
+
+- [`e81a6ae`](https://github.com/chakra-ui/chakra-ui/commit/e81a6aedfddbf76ee152fd545f9157b5de1988a4)
+  Thanks [@segunadebayo](https://github.com/segunadebayo)! - Provide a way to
+  exclude components from prose styling by using `not-prose`
+
+- [`9b7bf1d`](https://github.com/chakra-ui/chakra-ui/commit/9b7bf1dcab47686db6ef42416dc91d613df1d5a0)
+  Thanks [@segunadebayo](https://github.com/segunadebayo)! - Fix issue where
+  `_fullscreen` returns the wrong css selector
+
 ## 3.24.0
 
 ### Minor Changes
