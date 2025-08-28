@@ -30,7 +30,7 @@
 
 Chakra UI is a component system for building products with speed. Accessible
 React components for building high-quality web apps and design systems. Works
-with Next.js RSC
+with Next.js RSC. This documentation is for ESF.
 
 ## Documentation
 
