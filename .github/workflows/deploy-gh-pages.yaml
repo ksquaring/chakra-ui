@@ -11,7 +11,7 @@ on:
     branches: [ main ]
     paths:
       - 'chakra-ui/apps/www/**'
-      - '.github/workflows/deploy-gh-pages.yml'
+      - '.github/workflows/deploy-gh-pages.yaml'
 
 permissions:
   contents: read
@@ -51,6 +51,10 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ inputs.base_path }}
         run: pnpm build
+
+      - name: Disable Jekyll
+        working-directory: chakra-ui/apps/www/out
+        run: touch .nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
