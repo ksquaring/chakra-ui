@@ -1,0 +1,69 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_path:
+        description: 'NEXT_PUBLIC_BASE_PATH (e.g., /my-repo). Leave empty for root.'
+        required: false
+        default: '/chakra-ui'
+  push:
+    branches: [ main ]
+    paths:
+      - 'chakra-ui/apps/www/**'
+      - '.github/workflows/deploy-gh-pages.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build docs (static export)
+        working-directory: chakra-ui/apps/www
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ inputs.base_path }}
+        run: pnpm build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: chakra-ui/apps/www/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
